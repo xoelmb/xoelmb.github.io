@@ -1,22 +1,19 @@
-# xoelmb.github.io — Starter
+# xoelmb.github.io — Aesthetics-first
+Sitio estático sin build (HTML/CSS/JS) centrado en diseño limpio y accesible.
 
-Plantilla mínima para GitHub Pages con Markdown y el tema `minima`.
+## 🎨 Diseño
+- Paleta: azul-violeta suave con fondos oscuros/claros automáticos
+- Tipografías: Inter (UI), Playfair (toque editorial)
+- Gradientes *subtiles* + tarjetas con vidrio (glass) y sombras suaves
+- Responsive y sin dependencias
 
-## 🚀 Pasos para publicar
-1. Crea un repositorio público llamado **xoelmb.github.io**.
-2. Sube estos archivos a la raíz del repo.
-3. En **Settings → Pages**, selecciona **Deploy from a branch** y usa `main` / `/ (root)`.
-4. Abre: https://xoelmb.github.io
+## 🚀 Publicar
+1) Crea el repo público **xoelmb.github.io**.
+2) Sube todo el contenido de este zip a la raíz.
+3) En **Settings → Pages**: Deploy from a branch → `main` / `/ (root)`.
+4) Abre https://xoelmb.github.io
 
-## 🧰 Estructura
-- `_config.yml` — Configuración de Jekyll/tema.
-- `index.md` — Página principal en Markdown.
-- `404.html` — Página de error personalizada (opcional).
-- `assets/` — Carpeta para imágenes u otros archivos.
-
-## ✏️ Edición
-- Escribe contenido en `index.md` con Markdown.
-- Puedes crear nuevas páginas: por ejemplo `sobre.md`, y enlazarla desde `index.md`.
-
-## 🧩 Opcional: HTML puro
-Si prefieres HTML, crea un `index.html` en la raíz y elimina/renombra `index.md`.
+## 🛠 Personaliza
+- Edita `index.html` para enlaces, textos y proyectos.
+- Cambia tokens de color/tamaño en `assets/css/style.css` (bloque `:root`).
+- Añade imágenes en `assets/img` y úsalas con rutas relativas.

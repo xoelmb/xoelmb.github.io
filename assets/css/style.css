@@ -1,0 +1,137 @@
+/* ============ Design tokens ============ */
+:root{
+  --bg: #0b0d12;
+  --bg-soft: #111522;
+  --text: #e8eef8;
+  --muted: #94a3b8;
+  --brand: #7c9cff;
+  --brand-2: #a783ff;
+  --card: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.08);
+  --gradient: radial-gradient(1200px 600px at 10% -10%, #6ee7ff30, transparent 60%),
+              radial-gradient(1000px 600px at 90% -10%, #a78bfa30, transparent 60%);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f8fafc;
+    --bg-soft: #eef2ff;
+    --text: #0b1220;
+    --muted: #475569;
+    --card: rgba(0,0,0,.04);
+    --border: rgba(0,0,0,.08);
+    --gradient: radial-gradient(1200px 600px at 10% -10%, #7c9cff25, transparent 60%),
+                radial-gradient(1000px 600px at 90% -10%, #a783ff25, transparent 60%);
+  }
+}
+
+/* ============ Base ============ */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+  line-height:1.7;
+  margin:0;
+  letter-spacing:.2px;
+}
+h1,h2,h3{line-height:1.15;margin:0 0 .6rem}
+h1{font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 800;}
+h2{font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 800;}
+h3{font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700;}
+p{margin:.4rem 0 1rem}
+a{color:var(--brand)}
+
+.bg-mesh{
+  position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background: var(--gradient);
+  filter: blur(20px);
+}
+
+/* ============ Layout ============ */
+.site-header{
+  position: sticky; top: 0; backdrop-filter: blur(8px);
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 1rem 1.2rem; border-bottom:1px solid var(--border); background: color-mix(in oklab, var(--bg-soft) 90%, transparent);
+}
+.brand{font-weight:800; letter-spacing:.5px}
+.brand .sig{font-family: Playfair, serif; font-weight:600; font-size:1.2rem}
+.brand .dot{color:var(--brand)}
+.nav{display:flex; gap:.9rem; align-items:center}
+.nav a{color:var(--text); text-decoration:none; opacity:.9}
+.nav a:hover{opacity:1}
+.theme-toggle{
+  border:1px solid var(--border); background:var(--card); color:var(--text);
+  padding:.5rem .6rem; border-radius: 999px; cursor: pointer;
+}
+
+.hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items:center;
+  padding: 5rem 1.2rem 2rem; max-width:1200px; margin:0 auto;
+}
+.hero-content .kicker{color:var(--brand); font-weight:600; letter-spacing:.4px; margin-top:.4rem}
+.hero-content .lede{font-size: clamp(1rem, 1.2vw, 1.2rem); color: var(--muted)}
+.hero-card{
+  display:grid; grid-template-columns: repeat(2,1fr); gap:1rem;
+}
+.hero-card .stat{
+  background: var(--card); border:1px solid var(--border); padding:1.2rem; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.stat-num{font-size:1.6rem; font-weight:800}
+.stat-label{display:block; color:var(--muted); font-size:.9rem}
+.plus{font-weight:600; opacity:.7}
+
+.section{padding: 4rem 1.2rem; max-width:1200px; margin:0 auto}
+.section-head{margin-bottom:1.2rem}
+.muted{color:var(--muted)}
+.grid.two{display:grid; grid-template-columns: 1fr 1fr; gap:1.2rem}
+.grid.three{display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem}
+
+.card{
+  background: var(--card); border:1px solid var(--border); padding:1.2rem; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.project .pill{
+  display:inline-block; font-size:.75rem; padding:.25rem .6rem; border-radius:999px;
+  border:1px solid var(--border); background: color-mix(in oklab, var(--bg-soft) 85%, transparent);
+  margin-bottom:.3rem;
+}
+
+.btn{
+  display:inline-block; text-decoration:none; font-weight:600; border-radius: 12px; padding:.7rem 1rem;
+  border:1px solid var(--border); background: var(--card); color: var(--text);
+  transition: transform .15s ease, background .2s ease;
+}
+.btn:hover{transform: translateY(-1px)}
+.btn.primary{background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 40%, transparent), color-mix(in oklab, var(--brand-2) 50%, transparent)); border-color: transparent}
+.btn.ghost{background: transparent}
+.btn.small{padding:.5rem .8rem; font-size:.9rem}
+.btn.tiny{padding:.35rem .6rem; font-size:.8rem}
+
+.chips{display:flex; flex-wrap:wrap; gap:.5rem}
+.chip{
+  font-size:.9rem; padding:.45rem .7rem; border-radius:999px; border:1px solid var(--border);
+  background:color-mix(in oklab, var(--bg-soft) 85%, transparent); text-decoration:none; color:var(--text);
+}
+
+.pubs{display:grid; gap: .8rem}
+.pub{padding:1rem; border:1px dashed var(--border); border-radius: var(--radius)}
+.pub .meta{color:var(--muted); margin:.3rem 0 .6rem}
+
+.site-footer{padding:2rem 1.2rem; text-align:center; color:var(--muted); border-top:1px solid var(--border)}
+
+.tiny{font-size:.9rem}
+.list{margin:.6rem 0; padding-left:1.1rem}
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero{grid-template-columns: 1fr; padding-top: 3rem}
+  .grid.two{grid-template-columns: 1fr}
+  .grid.three{grid-template-columns: 1fr}
+}
+
+/* Utility */
+code{background: rgba(0,0,0,.2); padding:.15rem .35rem; border-radius:6px}
