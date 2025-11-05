@@ -16,6 +16,7 @@
     .badge{font-size:.75rem; padding:.15rem .45rem; border-radius:999px; border:1px solid var(--border)}
     .badge.preprint{background:rgba(124,156,255,.08)}
     .badge.peer{background:rgba(167,139,250,.08)}
+    .empty{opacity:.6}
   </style>
 </head>
 <body>
@@ -35,54 +36,22 @@
   <main class="section">
     <div class="section-head">
       <h2>Publicaciones</h2>
-      <p class="muted">Filtra por año, tipo o busca por texto.</p>
+      <p class="muted">Filtra por año, tipo o busca por texto. Fuente: ORCID / Crossref / bioRxiv (JSON).</p>
     </div>
 
     <div class="filters">
       <input id="q" type="search" placeholder="Buscar (título, journal, DOI)">
-      <select id="year">
-        <option value="">Año</option>
-        <option>2025</option>
-        <option>2024</option>
-      </select>
+      <select id="year"><option value="">Año</option></select>
       <select id="kind">
         <option value="">Tipo</option>
-        <option value="peer">Peer‑reviewed</option>
+        <option value="peer">Peer-reviewed</option>
         <option value="preprint">Preprint</option>
       </select>
     </div>
 
     <table id="pubs">
-      <thead><tr><th>Año</th><th>Título</th><th>Fuente</th><th>Tipo</th></tr></thead>
-      <tbody>
-        <tr data-year="2025" data-kind="peer">
-          <td>2025</td>
-          <td>
-            Early developmental origins of cortical disorders modeled in human neural stem cells
-            <div class="tiny muted">DOI: <a href="https://doi.org/10.1038/s41467-025-61316-w" target="_blank" rel="noopener">10.1038/s41467-025-61316-w</a></div>
-          </td>
-          <td><a href="https://www.nature.com/articles/s41467-025-61316-w" target="_blank" rel="noopener">Nature Communications</a></td>
-          <td><span class="badge peer">peer‑reviewed</span></td>
-        </tr>
-        <tr data-year="2024" data-kind="preprint">
-          <td>2024</td>
-          <td>
-            Early developmental origins of cortical disorders modeled in human neural stem cells (preprint)
-            <div class="tiny muted"><a href="https://www.biorxiv.org/content/10.1101/2024.06.14.598925v1" target="_blank" rel="noopener">bioRxiv</a></div>
-          </td>
-          <td>bioRxiv</td>
-          <td><span class="badge preprint">preprint</span></td>
-        </tr>
-        <tr data-year="2024" data-kind="preprint">
-          <td>2024</td>
-          <td>
-            A Curated Compendium of Transcriptomic Data for the Neocortical Neurogenesis (Cross-species joint decomposition)
-            <div class="tiny muted"><a href="https://www.biorxiv.org/content/10.1101/2024.02.26.581612v2" target="_blank" rel="noopener">bioRxiv</a></div>
-          </td>
-          <td>bioRxiv</td>
-          <td><span class="badge preprint">preprint</span></td>
-        </tr>
-      </tbody>
+      <thead><tr><th style="width:80px">Año</th><th>Título</th><th style="width:220px">Fuente</th><th style="width:140px">Tipo</th></tr></thead>
+      <tbody></tbody>
     </table>
   </main>
 
@@ -92,23 +61,53 @@
 
   <script src="/assets/js/theme.js"></script>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const q = document.getElementById('q');
-    const year = document.getElementById('year');
-    const kind = document.getElementById('kind');
-    const rows = Array.from(document.querySelectorAll('#pubs tbody tr'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const tbody = document.querySelector('#pubs tbody');
+  const yearSel = document.getElementById('year');
+  const kindSel = document.getElementById('kind');
+  const q = document.getElementById('q');
+  let rows = [];
 
-    function apply(){
-      const qq = q.value.toLowerCase().trim();
-      rows.forEach(tr => {
-        const hay = tr.textContent.toLowerCase();
-        const okQ = !qq || hay.includes(qq);
-        const okY = !year.value || tr.dataset.year === year.value;
-        const okK = !kind.value || tr.dataset.kind === kind.value;
-        tr.style.display = (okQ && okY && okK) ? '' : 'none';
-      });
-    }
-    [q,year,kind].forEach(el => el.addEventListener('input', apply));
+  fetch('/assets/pubs.json').then(r => r.json()).then(data => {
+    rows = data;
+    render();
+    fillYearOptions(data);
+  });
+
+  function fillYearOptions(data){
+    const years = Array.from(new Set(data.map(d => String(d.year))).values())
+      .filter(Boolean).sort((a,b)=>b.localeCompare(a));
+    years.forEach(y => {
+      const opt = document.createElement('option');
+      opt.value = y; opt.textContent = y;
+      yearSel.appendChild(opt);
+    });
+  }
+
+  function render(){
+    const qq = q.value.toLowerCase().trim();
+    const y = yearSel.value;
+    const k = kindSel.value;
+    tbody.innerHTML = '';
+    rows.forEach(p => {
+      const text = [p.title, p.venue, p.doi].join(' ').toLowerCase();
+      const okQ = !qq || text.includes(qq);
+      const okY = !y || String(p.year) === y;
+      const okK = !k || p.kind === k;
+      if(!(okQ && okY && okK)) return;
+      const tr = document.createElement('tr');
+      const badge = p.kind ? `<span class="badge ${p.kind}">${p.kind || ''}</span>` : '<span class="badge empty">—</span>';
+      tr.innerHTML = `
+        <td>${p.year || ''}</td>
+        <td>${p.title || ''}<div class="tiny muted">${p.doi ? 'DOI: <a href="https://doi.org/'+p.doi+'" target="_blank" rel="noopener">'+p.doi+'</a>' : ''}</div></td>
+        <td>${p.url ? '<a href="'+p.url+'" target="_blank" rel="noopener">'+(p.venue||'')+'</a>' : (p.venue||'')}</td>
+        <td>${badge}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  [q, yearSel, kindSel].forEach(el => el.addEventListener('input', render));
   </script>
 </body>
 </html>
