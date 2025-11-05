@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>xoelmb.github.io</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; background: #fafafa; color: #333; }
+    h1 { color: #1b4b9c; }
+    a { color: #1b4b9c; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>¡Hola, soy Xoel!</h1>
+  <p>Esta es mi página básica con GitHub Pages.</p>
+  <p>Puedes visitar mi perfil en <a href="https://github.com/xoelmb">GitHub</a>.</p>
+</body>
+</html>
