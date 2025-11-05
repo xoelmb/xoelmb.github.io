@@ -11,9 +11,9 @@
   <script defer src="/assets/js/theme.js"></script>
 </head>
 <body>
-  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-mesh parallax" style="--bg:url(/assets/img/hero_mesh.jpg)" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="#"><span class="sig">xoel</span><span class="dot">.</span>bio</a>
+    <a class="brand" href="#"><img src="/assets/img/logo_xoelbio.svg" alt="xoel.bio" class="brand-logo" /></a>
     <nav class="nav">
       <a href="#about">Sobre mí</a>
       <a href="#work">Trabajo</a>
@@ -35,6 +35,8 @@
           <a class="btn primary" href="#work">Ver proyectos</a>
           <a class="btn ghost" href="#pubs">Publicaciones</a>
         </div>
+      <div class="hero-portrait reveal">
+        <img src="/assets/img/avatar_abstract.png" alt="Abstract avatar" />
       </div>
       <div class="hero-card">
         <div class="stat">
@@ -88,6 +90,24 @@
         <p class="muted">Proyectos open-source y material docente</p>
       </div>
       <div class="grid three">
+        <article class="card project reveal">
+          <div class="pill">Repo</div>
+          <h3>cortical_disorders</h3>
+          <p>Analítica para trastornos corticales (GSBlabs).</p>
+          <a class="btn small" href="https://github.com/GSBlabs/cortical_disorders" target="_blank" rel="noopener">Abrir</a>
+        </article>
+        <article class="card project reveal">
+          <div class="pill">Repo</div>
+          <h3>MacBrainDev</h3>
+          <p>Herramientas para desarrollo cortical en macaco.</p>
+          <a class="btn small" href="https://github.com/xoelmb/MacBrainDev" target="_blank" rel="noopener">Abrir</a>
+        </article>
+        <article class="card project reveal">
+          <div class="pill">Repo</div>
+          <h3>utils</h3>
+          <p>Snippets y utilidades para bioinformática reproducible.</p>
+          <a class="btn small" href="https://github.com/xoelmb/utils" target="_blank" rel="noopener">Abrir</a>
+        </article>
         <article class="card project">
           <div class="pill">Repo</div>
           <h3>MacBrainDev</h3>
