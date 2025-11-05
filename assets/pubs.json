@@ -1,58 +1,9 @@
 [
-  {
-    "year": 2025,
-    "title": "Early developmental origins of cortical disorders modeled in human neural stem cells",
-    "venue": "Nature Communications",
-    "doi": "10.1038/s41467-025-61316-w",
-    "url": "https://www.nature.com/articles/s41467-025-61316-w",
-    "kind": "peer"
-  },
-  {
-    "year": 2024,
-    "title": "Early developmental origins of cortical disorders modeled in human neural stem cells (preprint)",
-    "venue": "bioRxiv",
-    "doi": "10.1101/2024.06.14.598925",
-    "url": "https://www.biorxiv.org/content/10.1101/2024.06.14.598925v1",
-    "kind": "preprint"
-  },
-  {
-    "year": 2024,
-    "title": "A Curated Compendium of Transcriptomic Data for the Neocortical Neurogenesis (Cross-species joint decomposition)",
-    "venue": "bioRxiv",
-    "doi": "10.1101/2024.02.26.581612",
-    "url": "https://www.biorxiv.org/content/10.1101/2024.02.26.581612v2",
-    "kind": "preprint"
-  },
-  {
-    "year": "",
-    "title": "—",
-    "venue": "",
-    "doi": "",
-    "url": "",
-    "kind": ""
-  },
-  {
-    "year": "",
-    "title": "—",
-    "venue": "",
-    "doi": "",
-    "url": "",
-    "kind": ""
-  },
-  {
-    "year": "",
-    "title": "—",
-    "venue": "",
-    "doi": "",
-    "url": "",
-    "kind": ""
-  },
-  {
-    "year": "",
-    "title": "—",
-    "venue": "",
-    "doi": "",
-    "url": "",
-    "kind": ""
-  }
+  {"title": "Human-specific features of the cerebellum and ZP2-regulated synapse development", "year": 2025, "type": "preprint", "doi": "10.1101/2025.09.08.674970", "url": "https://doi.org/10.1101/2025.09.08.674970", "outlet": "bioRxiv"},
+  {"title": "Early developmental origins of cortical disorders modeled in human neural stem cells", "year": 2025, "type": "peer-reviewed", "doi": "10.1038/s41467-025-61316-w", "url": "https://doi.org/10.1038/s41467-025-61316-w", "outlet": "Nature Communications"},
+  {"title": "Early Developmental Origins of Cortical Disorders Modeled in Human Neural Stem Cells", "year": 2024, "type": "preprint", "doi": "10.1101/2024.06.14.598925", "url": "https://doi.org/10.1101/2024.06.14.598925", "outlet": "bioRxiv"},
+  {"title": "A curated compendium of transcriptomic data for the exploration of neocortical development", "year": 2024, "type": "preprint", "doi": "10.1101/2024.02.26.581612", "url": "https://doi.org/10.1101/2024.02.26.581612", "outlet": "bioRxiv"},
+  {"title": "Molecular programs of regional specification and neural stem cell fate progression in macaque telencephalon", "year": 2023, "type": "peer-reviewed", "doi": "10.1126/science.adf3786", "url": "https://doi.org/10.1126/science.adf3786", "outlet": "Science"},
+  {"title": "Molecular and cellular evolution of the primate dorsolateral prefrontal cortex", "year": 2022, "type": "peer-reviewed", "doi": "10.1126/science.abo7257", "url": "https://doi.org/10.1126/science.abo7257", "outlet": "Science"},
+  {"title": "Molecular programs of regional specification and neural stem cell fate progression in developing macaque telencephalon", "year": 2022, "type": "preprint", "doi": "10.1101/2022.10.18.512724", "url": "https://doi.org/10.1101/2022.10.18.512724", "outlet": "bioRxiv"}
 ]
